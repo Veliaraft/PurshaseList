@@ -54,19 +54,21 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("Range")
     private void setInitialData(Cursor cursor) {
+        int curCount = cursor.getCount(), i=0;
         cursor.moveToFirst();
+        while (cursor.moveToNext()) {
+            String PRODUCT = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_PRODUCT));
+            String DATE = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_DATE));
+            String COST = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_COST));
+            String AMOUNT = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_AMOUNT));
+            listShape.add(new State(PRODUCT, DATE, AMOUNT, COST));
+        }
+        cursor.moveToLast();
         String PRODUCT = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_PRODUCT));
         String DATE = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_DATE));
         String COST = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_COST));
         String AMOUNT = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_AMOUNT));
         listShape.add(new State(PRODUCT, DATE, AMOUNT, COST));
-        while (cursor.moveToNext()) {
-            PRODUCT = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_PRODUCT));
-            DATE = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_DATE));
-            COST = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_COST));
-            AMOUNT = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_AMOUNT));
-            listShape.add(new State(PRODUCT, DATE, AMOUNT, COST));
-        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
