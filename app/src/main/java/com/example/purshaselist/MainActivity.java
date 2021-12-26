@@ -56,12 +56,14 @@ public class MainActivity extends AppCompatActivity {
     private void setInitialData(Cursor cursor) {
         int curCount = cursor.getCount(), i=0;
         cursor.moveToFirst();
-        while (cursor.moveToNext()) {
+        while (i<curCount) {
             String PRODUCT = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_PRODUCT));
             String DATE = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_DATE));
             String COST = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_COST));
             String AMOUNT = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_AMOUNT));
             listShape.add(new State(PRODUCT, DATE, AMOUNT, COST));
+            i++;
+            cursor.moveToNext();
         }
         cursor.moveToLast();
         String PRODUCT = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_PRODUCT));
