@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "720837337111",
+    "project_id": "xopowen2",
+    "storage_bucket": "xopowen2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720837337111:android:226afb98331a3a7cedfc52",
+        "android_client_info": {
+          "package_name": "com.example.firebasetet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "720837337111-rfroa4m24i7gtikv4v2913b9f79sh4nv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyzf9HdPyrpur-xjDyo8e3zlq_KgbN1ZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "720837337111-rfroa4m24i7gtikv4v2913b9f79sh4nv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

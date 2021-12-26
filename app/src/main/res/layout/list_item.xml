@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:orientation="vertical"
+    android:paddingBottom="30dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:textSize="16sp"
+        android:text="Название" />
+    <TextView
+        android:gravity="center_vertical"
+        android:background="@color/teal_700"
+        android:textColor="@color/white"
+        android:id="@+id/PRODUCT"
+        android:layout_width="fill_parent"
+        android:layout_height="34dp"
+        android:text="Название" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:textSize="16sp"
+        android:text="Дата" />
+    <TextView
+        android:id="@+id/DATE"
+        android:gravity="center_vertical"
+        android:background="@color/teal_700"
+        android:textColor="@color/white"
+        android:layout_width="fill_parent"
+        android:layout_height="36dp"
+        android:text="DATE"
+        app:layout_constraintTop_toBottomOf="@+id/PRODUCT"
+        tools:layout_editor_absoluteX="16dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:textSize="16sp"
+        android:text="Количество" />
+    <TextView
+        android:id="@+id/AMOUNT"
+        android:gravity="center_vertical"
+        android:background="@color/teal_700"
+        android:textColor="@color/white"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:text="AMOUNT"
+        app:layout_constraintTop_toBottomOf="@+id/DATE"
+        tools:layout_editor_absoluteX="16dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:textSize="16sp"
+        android:text="Цена" />
+    <TextView
+        android:id="@+id/COST"
+        android:gravity="center_vertical"
+        android:background="@color/teal_700"
+        android:textColor="@color/white"
+        android:layout_width="fill_parent"
+        android:layout_height="29dp"
+        android:text="COST"
+        app:layout_constraintTop_toBottomOf="@+id/AMOUNT"
+        tools:layout_editor_absoluteX="16dp" />
+
+
+</LinearLayout>
