@@ -19,8 +19,4 @@ public class State {
     public String getDATE(){return this.DATE;}
     public String getAMOUNT(){return this.AMOUNT;}
     public String getCOST(){return this.COST;}
-    public void setName(String PRODUCT) {
-        this.PRODUCT = PRODUCT;
-    }
-
 }

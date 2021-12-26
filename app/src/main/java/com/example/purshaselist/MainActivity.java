@@ -1,15 +1,20 @@
 package com.example.purshaselist;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,29 +52,33 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    private void setInitialData( Cursor cursor) {
-        if (listShape.size() != 0){
-            listShape.clear();
-        }
+    @SuppressLint("Range")
+    private void setInitialData(Cursor cursor) {
         cursor.moveToFirst();
+        String PRODUCT = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_PRODUCT));
+        String DATE = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_DATE));
+        String COST = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_COST));
+        String AMOUNT = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_AMOUNT));
+        listShape.add(new State(PRODUCT, DATE, AMOUNT, COST));
         while (cursor.moveToNext()) {
-            String PRODUCT = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_PRODUCT));
-            String COL = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_AMOUNT));
-            String COST = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_COST));
-            String CATEGORY = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_CATEGORY));
-            listShape.add(new State(PRODUCT,CATEGORY,COL,COST));
+            PRODUCT = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_PRODUCT));
+            DATE = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_DATE));
+            COST = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_COST));
+            AMOUNT = cursor.getString(cursor.getColumnIndex(SQLiteHelper.COLUMN_AMOUNT));
+            listShape.add(new State(PRODUCT, DATE, AMOUNT, COST));
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void addNote(View view){
         ContentValues values = new ContentValues();
-        values.put(SQLiteHelper.COLUMN_PRODUCT, product.getText().toString());
+        values.put(SQLiteHelper.COLUMN_COST, Double.parseDouble(cost.getText().toString()));
         values.put(SQLiteHelper.COLUMN_AMOUNT,Double.parseDouble( col.getText().toString()));
         values.put(SQLiteHelper.COLUMN_TYPE, type.getText().toString());
-        values.put(SQLiteHelper.COLUMN_COST,Double.parseDouble(cost.getText().toString()));
+        values.put(SQLiteHelper.COLUMN_DATE, LocalDate.now().toString());
+        values.put(SQLiteHelper.COLUMN_PRODUCT, product.getText().toString());
         values.put(SQLiteHelper.COLUMN_CATEGORY, category.getText().toString());
         database.insert(SQLiteHelper.DATABASE_TABLE,null, values);
-        setRiew();
     }
 
     public void showList(){

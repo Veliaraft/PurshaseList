@@ -19,7 +19,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_TYPE = "TYPE";
     public static final String COLUMN_COST = "COST";
     public static final String COLUMN_CATEGORY = "CATEGORY";
-    public static final String COLUMN_DATE = "DATA";
+    public static final String COLUMN_DATE = "DATE";
     public static final int DATABASE_VERSION = 1;
 
 
@@ -27,10 +27,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        LocalDate today = LocalDate.now();
         String createQuery;
         createQuery = "CREATE TABLE " + DATABASE_TABLE +
                 "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -39,7 +37,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 COLUMN_TYPE + " TEXT, " +
                 COLUMN_COST + " TEXT not null, " +
                 COLUMN_CATEGORY + " TEXT not null default \"продукт\"," +
-                COLUMN_DATE + "TEXT DEFAULT " +"(" + today +")" + ")";
+                COLUMN_DATE + " TEXT NOT NULL DEFAULT \"00.00.00\"" + ")";
         sqLiteDatabase.execSQL(createQuery);
     }
 
